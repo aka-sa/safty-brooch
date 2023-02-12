@@ -1,0 +1,30 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial SIM800i(2, 3); // RX, TX
+int button = 4;
+int buzzer = 5;
+
+void setup() {
+  SIM800i.begin(9600);
+  pinMode(button, INPUT_PULLUP);
+  pinMode(buzzer, OUTPUT);
+  delay(3000); // wait for the SIM800i to power up
+  SIM800i.println("AT+CMGF=1"); // set SMS text mode
+  delay(1000);
+}
+
+void loop() {
+  if (digitalRead(button) == LOW) {
+    digitalWrite(buzzer, HIGH);
+    delay(1000);
+    digitalWrite(buzzer, LOW);
+    SIM800i.println("AT+CMGS=\"+1234567890\""); // send SMS to this number
+    delay(1000);
+    SIM800i.println("Button pressed!"); // SMS message body
+    delay(100);
+    SIM800i.println((char)26); // send SMS
+    delay(1000);
+  }
+}
+
+
