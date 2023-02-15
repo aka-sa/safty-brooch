@@ -1,9 +1,17 @@
-1. Connect the SIM800i module to the ESP8266 board according to the manufacturer's instructions.
+1.Connect the positive terminal of a 9V battery to the VIN pin of the Arduino Uno board, and the negative terminal of the battery to the GND pin of the Arduino Uno board.
 
-2. Connect the button to the ESP8266 board. You can use a digital input pin on the ESP8266 to detect button presses and trigger an event.
+2.Connect a 4.1V to 4.4V DC power supply to the VCC and GND pins of the Sim800i module. This is to provide a stable power supply to the Sim800i module.
 
-3. Write code to detect button presses using the digitalRead() function in the Arduino IDE.
+3.Connect a 10K resistor between the RX and TX pins of the Arduino board and the RX and TX pins of the Sim800i module, respectively. This is to ensure that the voltage levels of the signals are compatible between the Arduino and the Sim800i module.
 
-4. When the button is pressed, send a message to the SIM800i module to send an SMS to a designated phone number. You can use the AT commands provided by the SIM800i module to send an SMS.
+4.Connect a push button to pin 4 of the Arduino board, and connect the other end of the push button to the GND pin of the Arduino board. This is to allow the user to trigger the sending of the message.
 
-5. In addition to sending an SMS, you can also trigger a buzzer to sound. You can connect a buzzer to one of the digital output pins on the ESP8266 and write code to turn it on and off when the button is pressed.
+5.Connect a buzzer to pin 5 of the Arduino board, with the positive leg of the buzzer connected to pin 5, and the negative leg connected to GND. This is to provide an audible indication of when the message has been sent.
+
+6.Connect the SIM card to the Sim800i module. You can refer to the datasheet of the module to see the specific pinout for the SIM card holder.
+
+7.Connect the antenna to the appropriate pin on the Sim800i module.\
+
+8.Connect a 9V battery to the VIN and GND pins of the Arduino board.
+
+9.Connect a separate power source with a stable 4.1V to 4.4V output to the VCC and GND pins of the SIM800 module.
