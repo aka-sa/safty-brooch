@@ -1,0 +1,35 @@
+#include <SoftwareSerial.h>
+
+const int buttonPin = 4;
+const int buzzerPin = 5;
+
+SoftwareSerial sim800Serial(2, 3);
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(buzzerPin, OUTPUT);
+
+  sim800Serial.begin(9600);
+  delay(1000);
+
+  sim800Serial.println("AT");
+  delay(1000);
+  sim800Serial.println("AT+CMGF=1");
+  delay(1000);
+}
+
+void loop() {
+  if (digitalRead(buttonPin) == LOW) {
+    digitalWrite(buzzerPin, HIGH);
+    delay(1000);
+    digitalWrite(buzzerPin, LOW);
+    delay(1000);
+
+    sim800Serial.println("AT+CMGS=\"+1234567890\"");
+    delay(1000);
+    sim800Serial.println("Motion detected!");
+    delay(1000);
+    sim800Serial.write(26);
+    delay(1000);
+  }
+}
