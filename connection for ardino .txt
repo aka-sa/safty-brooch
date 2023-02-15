@@ -1,0 +1,58 @@
+Connect the positive terminal of a 9V battery to the VIN pin of the Arduino Uno board, and the negative terminal of the battery to the GND pin of the Arduino Uno board.
+
+Connect a 4.1V to 4.4V DC power supply to the VCC and GND pins of the Sim800i module. This is to provide a stable power supply to the Sim800i module.
+
+Connect a 10K resistor between the RX and TX pins of the Arduino board and the RX and TX pins of the Sim800i module, respectively. This is to ensure that the voltage levels of the signals are compatible between the Arduino and the Sim800i module.
+
+Connect a push button to pin 4 of the Arduino board, and connect the other end of the push button to the GND pin of the Arduino board. This is to allow the user to trigger the sending of the message.
+
+Connect a buzzer to pin 5 of the Arduino board, with the positive leg of the buzzer connected to pin 5, and the negative leg connected to GND. This is to provide an audible indication of when the message has been sent.
+
+Connect the SIM card to the Sim800i module. You can refer to the datasheet of the module to see the specific pinout for the SIM card holder.
+
+Connect the antenna to the appropriate pin on the Sim800i module.
+
+Once the circuit is set up, you can upload the Arduino sketch to the board, and when the push button is pressed, the buzzer will sound and a message will be sent via the Sim800i module to the specified phone number.
+
+
+
+
+     +-------------------+
+     |     9V Battery    |
+     |       +ve         |
+     |        |          |
+     |       VIN         |
+     |      Arduino      |
+     |       GND         |
+     |        |          |
+     |       -ve         |
+     +-------------------+
+             |
+             |
+             +----[4.1V-4.4V]---+
+             |      Sim800i    |
+             |       VCC       |
+             |                |
+             |        RX      |
+             |        |       |
+             |        TX      |
+             |                |
+             |       GND      |
+             +----------------+
+             |
+             |
+         [10K Resistor]
+             |
+             |
+             +--------[TX]--------+
+             |        Arduino     |
+             |         RX         |
+             |         |          |
+             |         TX         |
+             |                     |
+             |         4         GND
+             |        Push       |
+             |        Button     |
+             |                     |
+             |         5         GND
+             +--------Buzzer-----+
